@@ -1,25 +1,60 @@
-﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.14.36414.22 d17.14
-MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "abstractshape.cs", "abstractshape.cs\abstractshape.cs.csproj", "{FABC6853-FF90-4A41-AE2B-CEDFB316199F}"
-EndProject
-Global
-	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|Any CPU = Debug|Any CPU
-		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{FABC6853-FF90-4A41-AE2B-CEDFB316199F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FABC6853-FF90-4A41-AE2B-CEDFB316199F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FABC6853-FF90-4A41-AE2B-CEDFB316199F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FABC6853-FF90-4A41-AE2B-CEDFB316199F}.Release|Any CPU.Build.0 = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {B4CEC117-3F70-4D7A-8B1D-05F09019789A}
-	EndGlobalSection
-EndGlobal
+using System;
+
+abstract class Shape
+{
+       public abstract double Area();
+       public abstract double Perimeter();
+}
+
+class Circle : Shape
+{
+       private double r;
+       public Circle(double radius)
+       {
+              r= radius;
+       }
+       public override double Area()
+       {
+        return 3.14 * r * r;
+       }
+       public override double Perimeter()
+       {
+        return 2 * 3.14 * r;
+       }
+}
+
+class Triangle : Shape
+{
+    private double a, b, c;
+    public Triangle(double s1, double s2, double s3)
+    {
+        a = s1;
+        b = s2;
+        c = s3;
+    }
+    public override double Area()
+    {
+        double s = (a + b + c) / 2;
+        return Math.Sqrt(s * (s - a) * (s - b) * (s - c));
+    }
+    public override double Perimeter()
+    {
+        return a + b + c;
+    }
+}   
+
+class Program
+{
+    static void Main()
+    {
+         Shape circle = new Circle(11);
+         Console.WriteLine("Circle Area: " + circle.Area());
+         Console.WriteLine("Circle Perimeter: " + circle.Perimeter());
+         Shape triangle = new Triangle(3, 4, 5);
+         Console.WriteLine("Triangle Area: " + triangle.Area());
+         Console.WriteLine("Triangle Perimeter: " + triangle.Perimeter());   
+        
+   
+    }
+}
+
