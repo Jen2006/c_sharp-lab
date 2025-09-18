@@ -16,7 +16,7 @@ class Exception
 
             int c =a/ b;
             Console.WriteLine("Result: " + c);
-      }
+       }
 
         catch(DivideByZeroException)
        {
@@ -25,8 +25,14 @@ class Exception
        catch(FormatException)
        {
            Console.WriteLine("Error:Please enter valid numbers only.");
-        }
-       
+       }
+
+        finally
+        {
+ 
+               Console.WriteLine("Thank you for using the program.");
+        } 
+         
     }
 }    
      
