@@ -1,25 +1,33 @@
-﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.14.36414.22 d17.14
-MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "nestedTry", "nestedTry\nestedTry.csproj", "{1F5ED1E6-B0F7-4737-A64D-34FA55D68674}"
-EndProject
-Global
-	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|Any CPU = Debug|Any CPU
-		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{1F5ED1E6-B0F7-4737-A64D-34FA55D68674}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1F5ED1E6-B0F7-4737-A64D-34FA55D68674}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1F5ED1E6-B0F7-4737-A64D-34FA55D68674}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1F5ED1E6-B0F7-4737-A64D-34FA55D68674}.Release|Any CPU.Build.0 = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {400C87DE-575F-4280-A66B-D65C02B2DA65}
-	EndGlobalSection
-EndGlobal
+using System;
+
+class Prgram
+{
+    static void Main()
+    {
+        
+        try
+        {
+
+            
+            //nested vode block
+            try
+            {
+               Console.WriteLine("Enter a number to divide 6 by");
+                int divisor = Convert.ToInt32(Console.ReadLine());
+
+                int divideByZero = 6 / divisor;
+                Console.WriteLine("6 divided by " + divisor + " is " + divideByZero);
+            }
+            // inner catch block
+            catch (Exception e)
+            {
+                Console.WriteLine("Inner catch is executed " + e.Message);
+            }
+        }
+        // outer ctach block
+        catch (DivideByZeroException e)
+        {
+              Console.WriteLine("Outer catch is executed" + e.Message); 
+        }
+    }
+}
